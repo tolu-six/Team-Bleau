@@ -19,7 +19,7 @@ if(isset($_POST['signupBtn'])){
 	$json_data = json_encode($data); #Encode data to JSON/Object format
 	
 	/**Every new registration should be appended (i.e added to the next line of the previous)*/
-	file_put_contents($database, $json_data, FILE_APPEND);
+	file_put_contents($fileDB, $json_data, FILE_APPEND);
 }
 
 ?>
