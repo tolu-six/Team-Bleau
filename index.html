@@ -24,26 +24,14 @@
 
     <title>Team Bleau | Log In</title>
 </head>
-
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md">
-        <a style="color: white" class="navbar-brand" href="#"><img src="" alt="Team-Bleau-logo" title="Team-Bleau logo" width="100px" height="100px"></a>
+        <a style="color: white" class="navbar-brand" href="index.html"><img src="images/Image_from_iOS-removebg-preview.png" alt="" title="Team-Bleau logo" width="100px" height="100px"></a> <p class="h3 mb-3 font-weight-normal" style="color: white;"> Team-Bleau</p>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sign Up</a>
-                </li>
-            </ul>
         </div>
     </nav>
 
@@ -53,7 +41,6 @@
         <form class="form-signin" method="post" action="login.php">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center; color: white;"> Sign in</h1>
             <div class="social-login">
-                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
                 <button id="my-signin2" class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
             </div>
             <p style="text-align:center"> OR </p>
@@ -83,26 +70,21 @@
         </form>
 
         <!--Signup-->
-        <form action="signup.php" method="POST" class="form-signup">
-            <div class="social-login">
-                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span> </button>
-            </div>
+
+        <form action="#" class="form-signup">
             <div class="social-login">
                 <button id="my-signin2" class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign up with Google+</span> </button>
             </div>
-
-            <p style="text-align:center">OR</p>
+      <p style="text-align:center">OR</p>
 
             <input type="text" id="user-name" class="form-control" name="username" placeholder="Full name" required="" autofocus="">
             <input type="email" id="user-email" class="form-control" name="email" placeholder="Email address" required autofocus="">
             <input type="password" id="user-pass" class="form-control" name="password" placeholder="Password" required autofocus="">
             <input type="password" id="user-repeatpass" class="form-control" placeholder="Confirm Password" required autofocus="">
-
             <div class="input-group">
-                <input class="btn btn-md btn-block submit" type="submit" name="signupBtn" value="Sign Up"><i class="fas fa-user-plus"></i>
+                <input class="btn btn-md btn-block submit" type="submit" name="signupBtn" value="Sign Up"><i class="fas fa-user-plus">Sign Up</i>
             </div>
-
-            <a href="#" id="cancel_signup"><i class="fa fa-angle-left"></i> Back</a>
+            <a href="#" id="cancel_signup"><i class="fa fa-angle-left"></i>Back</a>
         </form>
         <br>
         </div>
