@@ -1,20 +1,22 @@
 <?php
 
 if(isset($_POST['loginBtn'])){
-	$email = stripslashes($_POST['loginemail']);
-	$password = stripslashes(md5($_POST['loginpassword']));
-	$filedb = file_get_contents("datadb.json");  
-	$data = json_decode($filedb, true);
-	 
-	foreach ($data as $key => $value) {
-	 $dat =  $value['email'].' ';  
-	 if(strstr($dat,$email)){
-	  echo "login success";   
-	 }else{
-      echo "login failed";		 
-	 }
+
+	#Retrieves user inputs from the form
+	$email = $_POST['loginemail'];
+	$password = $_POST['loginpassword'];
+
+	/**File where user data is stored*/
+	$fileDB = "datadb.json";
+
+	$json_data = file_get_contents($fileDB); #Retrieve user data
+
+	$userData = json_decode($json_data);
+
+	if(password_verify($password, $userData->password) AND $email === $userData->email) 
+	{
+    	header('Location: welcome.html?email='.$email);
 	}
-	
 }
 
 ?>
