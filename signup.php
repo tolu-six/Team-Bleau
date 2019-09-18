@@ -1,42 +1,46 @@
-<?php
-
-if(isset($_POST['signupBtn'])){
-
-	/**File to store user data*/
-	$fileDB = "datadb.json";
-
-	$data = [];
-
-	$formArray = $_POST; #retrieves the form values passed
-	$formArray['password'] = password_hash($formArray['password'], PASSWORD_DEFAULT); #Hash the password
-	
-	$json_retrieved_data = file_get_contents($fileDB);
-    	$decoded_data = json_decode($json_retrieved_data, true);
-	
-    	$email = $formArray['email'];
-    	$email_exists = false;
-		
-	foreach ($decoded_data as $key => $value) {
-		if ($value['email'] == $email) {
-		    $email_exists = true;
-		    break;
-		}
-	}
-	if ($email_exist) {
-		Location('index.html');
-	  } 
-	else {
-	
-		//$data['id'] = 1;
-		//$data = array_merge($data, $formArray); #combine id to the data from form
-
-		#Removes the SignUpBtn since it is returning an empty value
-		unset($formArray['signupBtn']);
-
-		$json_data = json_encode($formArray); #Encode data to JSON/Object format
-
-		/**Every new registration should be appended (i.e added to the next line of the previous)*/
-		file_put_contents($fileDB, $json_data, FILE_APPEND);
-	}		
-}
-?>
+<?php  
+ $message = '';  
+ $error = '';  
+ if(isset($_POST["signupBtn"]))  
+ {  
+      if(empty($_POST["username"]))  
+      {  
+           $error = "<label class='text-danger'>Enter Name</label>";  
+      }  
+      else if(empty($_POST["password"]))  
+      {  
+           $error = "<label class='text-danger'>Enter password</label>";  
+      }  
+      else if(empty($_POST["email"]))  
+      {  
+           $error = "<label class='text-danger'>Enter email</label>";  
+      }else if($_POST['password']!=$_POST['confirm_password']){
+	$error = "<label class='text-danger'>password and confirm password not the same.</label>";	  
+	  }  
+      else  
+      {  
+           if(file_exists('datadb.json'))  
+           {  
+                $current_data = file_get_contents('datadb.json');  
+                $array_data = json_decode($current_data, true);  
+                $extra = array(  
+                     'name'               =>     $_POST['username'],  
+                     'email'          =>     $_POST["email"],  
+                     'password'     =>     md5($_POST["password"])  
+                );  
+                $array_data[] = $extra;  
+                $final_data = json_encode($array_data);  
+                if(file_put_contents('datadb.json', $final_data))  
+                {  
+					 $message = "<label class='text-success'>registration Successfull</p>";
+					 echo $message;  
+                }  
+           }  
+           else  
+           {  
+				$error = 'JSON File not exits'; 
+				echo $error; 
+           }  
+      }  
+ }  
+ ?>  
