@@ -11,11 +11,13 @@ if(isset($_POST['loginBtn'])){
 
 	$json_data = file_get_contents($fileDB); #Retrieve user data
 
-	$userData = json_decode($json_data);
+	$userData = json_decode($json_data, true);
+	
+	$prev_password = $userData->password; //Retrieves user password
 
-	if(password_verify($password, $userData->password) AND $email === $userData->email) 
+	if(password_verify($password, $prev_password) AND $email === $userData->email) 
 	{
-    	Location('');
+    	Location('index.html'); //This should be changed to the Dashboard were it welcomes the signed in user.
 	}
 }
 
