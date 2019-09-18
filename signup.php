@@ -16,27 +16,33 @@ if(isset($_POST['signupBtn'])){
 	$data = [];
 
 	$formArray = $_POST; #retrieves the form values passed
-    foreach ($decode_data_array as $key => $value) {
 
-    	if($decode_data_array['email'] !== $formArray['email']){
-			$formArray['password'] = password_hash($formArray['password'], PASSWORD_DEFAULT); #Hash the password
+		foreach ($decode_data_array as $key => $value) {
 
-			#Removes the SignUpBtn since it is returning an empty value
-			unset($formArray['signupBtn'], $formArray['confirm_password']);
-			$json_data = json_encode($formArray); #Encode data to JSON/Object format
-   
-	   /**Every new registration should be appended (i.e added to the next line of the previous)*/
-	   file_put_contents($fileDB, $json_data, FILE_APPEND);
+	    	if($decode_data_array['email'] === $formArray['email']){
+	    		$email_exist = true;
+	    		break;
+	    	}
+    	}
 
-        header('Location: welcome.html'); 
-    	}else{
+    	if($email_exist){
     		echo "<script>
 					alert('Email address entered already exist in database, please change your email');
 					window.location.href='index.html';
 					</script>";
-    	}
-    }
-	   
+		}else{
+
+			$formArray['password'] = password_hash($formArray['password'], PASSWORD_DEFAULT); #Hash the password
+
+						#Removes the SignUpBtn since it is returning an empty value
+						unset($formArray['signupBtn'], $formArray['confirm_password']);
+						$json_data = json_encode($formArray); #Encode data to JSON/Object format
+			   
+				   /**Every new registration should be appended (i.e added to the next line of the previous)*/
+				   file_put_contents($fileDB, $json_data, FILE_APPEND);
+
+			        header('Location: welcome.html'); 
+			}				   
 }
 
 ?>
