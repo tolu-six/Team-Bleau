@@ -16,6 +16,10 @@ if(isset($_POST['loginBtn'])){
 	if(password_verify($password, $userData->password) AND $email === $userData->email) 
 	{
     	header('Location: welcome.php?email='.$email);
+	}else{
+		echo "<script>
+			alert('Wrong Password');
+			window.location.href='index.html';</script>";	
 	}
 }
 
