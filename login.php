@@ -7,9 +7,11 @@ if(isset($_POST['loginBtn'])){
 	$data = json_decode($filedb, true);
 	 
 	foreach ($data as $key => $value) {
-	 $dat =  $value['email'].', ';  
+	 $dat =  $value['email'].' ';  
 	 if(strstr($dat,$email)){
-	  echo "success";   
+	  echo "login success";   
+	 }else{
+      echo "login failed";		 
 	 }
 	}
 	
