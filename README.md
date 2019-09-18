@@ -1,5 +1,6 @@
 # Team-Bleau
 #Fork this repo and then clone it. Please push to your forked repo and submit Pull request, don't merge.
+# So I combined login, sign up and reset password.
 
 Guidelines for efficiency:
 
@@ -28,3 +29,5 @@ out and add to the repository.
 
 I'd start with a simple page and authentication I re-drafted to work
 with mySQL but we'll change it to work with a JSON.
+=======
+
