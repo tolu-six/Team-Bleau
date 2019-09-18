@@ -41,7 +41,7 @@ if(isset($_POST['signupBtn'])){
 				   /**Every new registration should be appended (i.e added to the next line of the previous)*/
 				   file_put_contents($fileDB, $json_data, FILE_APPEND);
 
-			        header('Location: welcome.html'); 
+			        header('Location: welcome.php?email='.$formArray['email']); 
 			}				   
 }
 
