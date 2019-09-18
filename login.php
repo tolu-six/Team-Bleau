@@ -15,7 +15,7 @@ if(isset($_POST['loginBtn'])){
 
 	if(password_verify($password, $userData->password) AND $email === $userData->email) 
 	{
-    	header('Location: welcome.html?email='.$email);
+    	header('Location: welcome.php?email='.$email);
 	}
 }
 
