@@ -1,6 +1,6 @@
 <?php
 
-$servername = "localhost:3309";
+$servername = "localhost";
 $database = "team_bleau_hng";
 $username = "root";
 $password = "";
