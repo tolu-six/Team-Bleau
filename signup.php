@@ -3,7 +3,6 @@
 include 'conn.php';
 
 if(isset($_POST['signupBtn'])){
-
 	$username = trim($_POST['username']);
 	$email = trim($_POST['email']);
 	$passwd = password_hash($_POST['password'], PASSWORD_DEFAULT);

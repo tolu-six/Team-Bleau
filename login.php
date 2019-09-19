@@ -10,7 +10,6 @@ if(isset($_POST['loginBtn'])){
 
 	$retrieve_user_data = mysqli_query($conn, $sql);
 
-
 		if(mysqli_num_rows($retrieve_user_data) > 0){
 
 			while($userRow = mysqli_fetch_array($retrieve_user_data)){
